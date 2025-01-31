@@ -54,7 +54,7 @@ def fetch_twitter_data(query, location=None, since=None, until=None):
     if until:
         params["end_time"] = until
     
-    response = requests.get(url, headers=headers, params=params)
+    response = requests.get(url, headers=headers, params=params, timeout=60)
     
     if response.status_code == 200:
         tweets = response.json().get("data", [])

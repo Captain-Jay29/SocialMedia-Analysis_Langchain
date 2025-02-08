@@ -1,7 +1,7 @@
-import requests
 import json
 import psycopg2
 from datetime import datetime
+from security import safe_requests
 
 # Database Configuration
 db_config = {
@@ -54,7 +54,7 @@ def fetch_twitter_data(query, location=None, since=None, until=None):
     if until:
         params["end_time"] = until
     
-    response = requests.get(url, headers=headers, params=params)
+    response = safe_requests.get(url, headers=headers, params=params)
     
     if response.status_code == 200:
         tweets = response.json().get("data", [])

@@ -11,3 +11,4 @@ nltk
 psycopg2-binary
 keybert
 streamlit
+security==1.3.1

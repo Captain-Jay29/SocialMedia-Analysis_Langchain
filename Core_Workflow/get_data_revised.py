@@ -27,7 +27,6 @@ Each result is a dictionary:
 import os
 import re
 import html
-import requests
 from urllib.parse import quote
 from googlesearch import search
 from bs4 import BeautifulSoup
@@ -35,6 +34,7 @@ import torch
 from transformers import pipeline, AutoTokenizer, AutoModelForSeq2SeqLM
 from dotenv import load_dotenv
 import nltk
+from security import safe_requests
 
 # Load environment variables and NLTK data
 load_dotenv()
@@ -89,7 +89,7 @@ def get_clean_content(url):
     # }
     
     # response = requests.get(api_endpoint, headers=headers)
-    response = requests.get(api_endpoint)
+    response = safe_requests.get(api_endpoint)
     if response.status_code == 200:
         return response.text
     else:

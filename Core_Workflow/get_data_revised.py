@@ -89,7 +89,7 @@ def get_clean_content(url):
     # }
     
     # response = requests.get(api_endpoint, headers=headers)
-    response = requests.get(api_endpoint)
+    response = requests.get(api_endpoint, timeout=60)
     if response.status_code == 200:
         return response.text
     else:
